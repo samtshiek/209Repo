@@ -7,3 +7,17 @@
 ul {
     color: red;
 }
+
+#listSection {
+    background-image: linear-gradient(aqua, purple);
+    margin-top: 20px;
+    height: 200px;
+    width: 400px;
+}
+
+#listSection2 {
+    background-image: linear-gradient(purple, aqua);
+    margin-top: 20px;
+    height: 200px;
+    width: 400px;
+}
