@@ -4,20 +4,21 @@
     font-size: 150%;
 }
 
-ul {
-    color: red;
+ol {
+    color: rosybrown;
 }
 
 #listSection {
-    background-image: linear-gradient(aqua, purple);
-    margin-top: 20px;
-    height: 200px;
-    width: 400px;
+    background-image: linear-gradient(rgb(30, 42, 44), rgb(124, 121, 124));
+    padding-top: 200px;
+    height: 400px;
+    width: 500px;
+    text-align: left;
+    margin: auto;
+    
 }
 
-#listSection2 {
-    background-image: linear-gradient(purple, aqua);
-    margin-top: 20px;
-    height: 200px;
-    width: 400px;
+div {
+    text-align: center;
 }
+

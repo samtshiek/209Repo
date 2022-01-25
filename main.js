@@ -1,62 +1,61 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    document.getElementById("changeWords").style.visibility = "hidden";
-    document.getElementById('listSection2').style.visibility = "hidden";
-    let fruitArray = [];
+    let MovieArray = [];
+    let listHeading = document.getElementById("ListHeading");
+    let listSection = document.getElementById('listSection');
+    listHeading.style.visibility = "hidden";
+    listSection.style.visibility = "hidden";
+    document.getElementById("addMovies").addEventListener("click", function () {
+        let titleTextbox = document.getElementById('TitleTextbox');
+        let ratingTextbox = document.getElementById('RatingTextbox');
+        let yearTextbox = document.getElementById('YearTextbox');
 
-    document.getElementById("start").addEventListener("click", function () {
-        fruitArray = [];
-        document.getElementById('listSection').style.visibility = "visible";
-        document.getElementById("changeWords").style.visibility = "hidden";
-        document.getElementById('listSection2').style.visibility = "hidden";
-        document.getElementById("start").style.visibility = "hidden";
-        let listSection = document.getElementById('listSection');
 
-        let myList = "<ul>"
-        for(let i = 0; i < 3; i++) {
-        let word = prompt("Please enter a word", "apple");
+        if(titleTextbox.value.length != 0 && ratingTextbox.value.length != 0 && yearTextbox.value.length != 0) {
+            if (MovieArray.length < 10) {
+                movie = {}
+                movie.title = titleTextbox.value;
+                movie.rating = ratingTextbox.value;
+                movie.year = yearTextbox.value;
 
-        if (word != null) {
-            fruitArray.push(word);
-            myList += "<li>" +  word + "</li>";
+            MovieArray.push(movie);
+            }
         }
-  }
-  myList += "</ul>"
-  listSection.innerHTML = myList;
-  document.getElementById("changeWords").style.visibility = "visible";
+        else {
+            alert("Incorrect data. Movie cannot be saved while field is empty.");
+        }
 
+        titleTextbox.value = "";
+        ratingTextbox.value = "";
+        yearTextbox.value = "";
     });
 
-    document.getElementById("changeWords").addEventListener("click", function () {
-        document.getElementById("changeWords").style.visibility = "hidden";
-        document.getElementById('listSection').style.visibility = "hidden";
-        document.getElementById('listSection2').style.visibility = "visible";
-        document.getElementById("start").style.visibility = "visible";
-        let changedWords = fruitArray.map(changeWord);
+    document.getElementById("showMovies").addEventListener("click", function () {
+        
+        listHeading.style.visibility = "visible";
+        listSection.style.visibility = "visible";
 
-        let listSection = document.getElementById('listSection2');
+        let myList = "<ol>"
+        for(let i = 0; i < MovieArray.length; i++) {
 
-        let myList = "<ul>"
-        for(let i = 0; i < changedWords.length; i++) {
-
-        myList += "<li>" +  changedWords[i] + "</li>";
+        myList += "<li> Title: " +  MovieArray[i].title + ", Rating: " + MovieArray[i].rating + ", Year: " + MovieArray[i].year + "</li>";
         
   }
-  myList += "</ul>"
+  myList += "</ol>"
   listSection.innerHTML = myList;
 
-        function changeWord(word) {
-            return word.charAt(word.length - 1) + word.substring(1, word.length -
-                1) + word.charAt(0);
-        }
     });
 
-    document.getElementById("listSection2").addEventListener("mouseover", function () {
-        document.getElementById('listSection2').style.fontSize = "50px";
-    });
+    function compare_ranking( a, b )
+  {
+  if ( a.lname.toLowerCase() < b.lname.toLowerCase()){
+    return -1;
+  }
+  if ( a.lname.toLowerCase() > b.lname.toLowerCase()){
+    return 1;
+  }
+  return 0;
+}
 
-    document.getElementById("listSection2").addEventListener("mouseout", function () {
-        document.getElementById('listSection2').style.fontSize = "15px";
-    });
 });
 
