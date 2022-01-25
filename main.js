@@ -46,16 +46,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     });
 
-    function compare_ranking( a, b )
-  {
-  if ( a.lname.toLowerCase() < b.lname.toLowerCase()){
-    return -1;
-  }
-  if ( a.lname.toLowerCase() > b.lname.toLowerCase()){
-    return 1;
-  }
-  return 0;
-}
-
 });
 
