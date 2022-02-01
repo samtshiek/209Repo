@@ -1,50 +1,51 @@
+let movieArray = [];
+let selectedType = "";
+
+// define a constructor to create movie objects
+let MovieObject = function (pTitle, pYear, pType) {
+    this.title = pTitle;
+    this.year = pYear;
+    this.type = pType;
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    let MovieArray = [];
-    let listHeading = document.getElementById("ListHeading");
-    let listSection = document.getElementById('listSection');
-    listHeading.style.visibility = "hidden";
-    listSection.style.visibility = "hidden";
-    document.getElementById("addMovies").addEventListener("click", function () {
-        let titleTextbox = document.getElementById('TitleTextbox');
-        let ratingTextbox = document.getElementById('RatingTextbox');
-        let yearTextbox = document.getElementById('YearTextbox');
+    document.getElementById("buttonAdd").addEventListener("click", function () {
 
-
-        if(titleTextbox.value.length != 0 && ratingTextbox.value.length != 0 && yearTextbox.value.length != 0) {
-            if (MovieArray.length < 10) {
-                movie = {}
-                movie.title = titleTextbox.value;
-                movie.rating = ratingTextbox.value;
-                movie.year = yearTextbox.value;
-
-            MovieArray.push(movie);
-            }
-        }
-        else {
-            alert("Incorrect data. Movie cannot be saved while field is empty.");
-        }
-
-        titleTextbox.value = "";
-        ratingTextbox.value = "";
-        yearTextbox.value = "";
+        movieArray.push(new MovieObject(document.getElementById("movieTitle").value, document.getElementById("movieYear").value, selectedType));
+        console.log(movieArray);
+        document.getElementById("movieTitle").value = "";
+        document.getElementById("movieYear").value = "";
     });
 
-    document.getElementById("showMovies").addEventListener("click", function () {
-        
-        listHeading.style.visibility = "visible";
-        listSection.style.visibility = "visible";
-
-        let myList = "<ol>"
-        for(let i = 0; i < MovieArray.length; i++) {
-
-        myList += "<li> Title: " +  MovieArray[i].title + ", Rating: " + MovieArray[i].rating + ", Year: " + MovieArray[i].year + "</li>";
-        
-  }
-  myList += "</ol>"
-  listSection.innerHTML = myList;
-
+    $(document).bind("change", "#select-type", function (event, ui) {
+        selectedType = document.getElementById("select-type").value;
     });
+
+    // page before show code *************************************************************************
+    $(document).on("pagebeforeshow", "#list", function (event) {   
+        createList();
+    });
+    
 
 });
+
+
+
+function createList() {
+    
+    // clear prior data
+
+
+    var myul = document.getElementById("myList");
+    myul.innerHTML = '';
+
+    movieArray.forEach(function (element,) {   // use handy array forEach method
+        var li = document.createElement('li');
+        li.innerHTML = element.title + ", " + element.year + ":  " + element.type;
+        myul.appendChild(li);
+    });
+};
 

@@ -3,22 +3,3 @@
     font-family: Helvetica, sans-serif;
     font-size: 150%;
 }
-
-ol {
-    color: rosybrown;
-}
-
-#listSection {
-    background-image: linear-gradient(rgb(30, 42, 44), rgb(124, 121, 124));
-    padding-top: 200px;
-    height: 400px;
-    width: 500px;
-    text-align: left;
-    margin: auto;
-    
-}
-
-div {
-    text-align: center;
-}
-
